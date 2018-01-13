@@ -1,10 +1,18 @@
-import urllib.request
+import os
+import django
+import urllib2
 import bs4
 import re
+import json
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "movies.settings")
+django.setup()
+
+from core.models import Movie
 
 url = "https://www.rottentomatoes.com/browse/opening/"
 
-request = urllib.request.urlopen(url)
+request = urllib2.urlopen(url)
 
 soup = bs4.BeautifulSoup(request, 'html.parser')
 
@@ -18,5 +26,10 @@ match = match.replace("},{", "};{")
 
 match_list = match.split(';')
 
+
 for item in match_list:
-    print(item)
+    print(json.loads(item)["url"])
+    movie_object = Movie(
+        movie_url=json.loads(item)["url"]
+    )
+    movie_object.save()
