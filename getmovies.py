@@ -1,10 +1,10 @@
-import urllib.request
+import urllib2
 import bs4
 import re
 
 url = "https://www.rottentomatoes.com/browse/opening/"
 
-request = urllib.request.urlopen(url)
+request = urllib2.urlopen(url)
 
 soup = bs4.BeautifulSoup(request, 'html.parser')
 
