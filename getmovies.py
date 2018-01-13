@@ -1,13 +1,12 @@
-import urllib2
-from bs4 import BeautifulSoup
+import urllib.request
+import bs4
 
 
-my_url = "https://www.rottentomatoes.com/browse/opening/"
+url = "https://www.rottentomatoes.com/browse/opening/"
 
-page = urllib2.urlopen(my_url)
+request = urllib.request.urlopen(url)
 
-soup = BeautifulSoup(page, 'html.parser')
-
+soup = bs4.BeautifulSoup(request, 'html.parser')
 
 x = soup.findAll("script", {"id": "jsonLdSchema"})
 
