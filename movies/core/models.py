@@ -10,9 +10,12 @@ class Movie(models.Model):
     """
     Describes a movie with properties such as title, year, etc.
     """
-    title = models.CharField(max_length=1024)
-    content_rating = models.CharField(max_length=1024)
-    movie_url = models.CharField(max_length=1024)
+    position = models.IntegerField(blank=True, null=True)
+    title = models.CharField(max_length=1024, blank=True, null=True)
+    image_url = models.CharField(max_length=1024, blank=True, null=True)
+    movie_url = models.CharField(max_length=1024, blank=True, null=True)
+    production_company = models.CharField(max_length=1024, blank=True, null=True)
+    rating = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.title
