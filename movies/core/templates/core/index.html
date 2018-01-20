@@ -2,7 +2,7 @@
     <h3>Movie list:</h3>
     <ul>
         {% for movie in all_movies %}
-        <li><a href="/core/{{ movie.id }}/">{{ movie.title }}</a></li>
+            <li><a href="{% url 'core:detail' movie.id %}">{{ movie.title }}</a></li>
         {% endfor %}
     </ul>
 {% else %}
