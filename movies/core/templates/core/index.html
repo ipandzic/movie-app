@@ -1,5 +1,10 @@
-<ul>
-    {% for movie in all_movies %}
-    <li><a href="/core/{{ movie.id }}/">{{ movie.title }}</a></li>
-    {% endfor %}
-</ul>
+{% if all_movies %}
+    <h3>Movie list:</h3>
+    <ul>
+        {% for movie in all_movies %}
+        <li><a href="/core/{{ movie.id }}/">{{ movie.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>No movies in database</h3>
+{% endif %}

@@ -18,9 +18,9 @@ request = urllib2.urlopen(url)
 
 soup = bs4.BeautifulSoup(request, 'html.parser')
 
-x = soup.findAll("script", {"id": "jsonLdSchema"})
+x = soup.find("script", {"id": "jsonLdSchema"})
 
-text = x[0].get_text()
+text = x.get_text()
 
 match = re.findall(r'\[.+\]', text)[0][1:-1]
 match = match.replace("},{", "};{")
@@ -41,7 +41,8 @@ for item in match_list:
     item_dict = json.loads(item_text)
     item_title = item_dict["name"]
     item_production_company = item_dict["productionCompany"]["name"]
-    item_img_url = item_dict["image"]
+    item_x2 = item_soup.find("img", {"class": "posterImage"}).attrs
+    item_img_url = item_x2["src"]
     try:
         item_rating = item_dict["aggregateRating"]["ratingValue"]
         print(item_rating)
