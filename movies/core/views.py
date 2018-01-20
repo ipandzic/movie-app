@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
+from django.template import loader
 from django.http import HttpResponse
 
 from .models import Movie
@@ -9,11 +10,11 @@ from .models import Movie
 
 def index(request):
     all_movies = Movie.objects.all()
-    html = ''
-    for movie in all_movies:
-        url = '/core/' + str(movie.id) + '/'
-        html += '<a href="' + url + '">' + movie.title + '</a><br>'
-    return HttpResponse(html)
+    template = loader.get_template('core/index.html')
+    context = {
+        'all_movies': all_movies,
+    }
+    return HttpResponse(template.render(context, request))
 
 
 def detail(request, movie_id):
