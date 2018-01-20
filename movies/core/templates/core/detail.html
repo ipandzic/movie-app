@@ -1,6 +1,8 @@
 {% extends 'core/base.html' %}
 {% block title %}{{ movie.title }}{% endblock %}
+
 {% block body %}
+
     <img src="{{ movie.image_url }}">
 
     <h1>Movie Title: {{ movie.title }}</h1>
@@ -11,4 +13,5 @@
     {% else %}
         <h3>Average Rating: {{ movie.rating }} %</h3>
     {% endif %}
+    
 {% endblock %}

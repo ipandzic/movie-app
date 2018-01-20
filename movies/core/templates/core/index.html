@@ -1,6 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block body %}
+
     {% if all_movies %}
         <h3>Movie list:</h3>
         <ul>
@@ -11,4 +12,5 @@
     {% else %}
         <h3>No movies in database</h3>
     {% endif %}
+
 {% endblock %}

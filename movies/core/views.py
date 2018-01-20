@@ -1,16 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, get_object_or_404
+from django.views import generic
 
 from .models import Movie
 
 
-def index(request):
-    all_movies = Movie.objects.all()
-    return render(request, 'core/index.html', {'all_movies': all_movies})
+class IndexView(generic.ListView):
+    template_name = "core/index.html"
+    context_object_name = 'all_movies'
+
+    def get_queryset(self):
+        return Movie.objects.all()
 
 
-def detail(request, movie_id):
-    movie = get_object_or_404(Movie, pk=movie_id)
-    return render(request, 'core/detail.html', {'movie': movie})
+class DetailView(generic.DetailView):
+    model = Movie
+    template_name = "core/detail.html"
