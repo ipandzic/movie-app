@@ -47,7 +47,7 @@ for item in match_list:
         item_rating = item_dict["aggregateRating"]["ratingValue"]
         print(item_rating)
     except KeyError:
-        item_rating = 0
+        item_rating = None
         print(item_rating)
     movie_object = Movie(
         position=item_position,
