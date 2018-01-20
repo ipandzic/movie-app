@@ -1,10 +1,14 @@
-<img src="{{ movie.image_url }}">
+{% extends 'core/base.html' %}
+{% block title %}{{ movie.title }}{% endblock %}
+{% block body %}
+    <img src="{{ movie.image_url }}">
 
-<h1>Movie Title: {{ movie.title }}</h1>
-<h3>Production Company:  {{ movie.production_company }}</h3>
+    <h1>Movie Title: {{ movie.title }}</h1>
+    <h3>Production Company:  {{ movie.production_company }}</h3>
 
-{% if movie.rating == None %}
-    <h3>Average Rating: Not rated yet</h3>
-{% else %}
-    <h3>Average Rating: {{ movie.rating }} %</h3>
-{% endif %}
+    {% if movie.rating == None %}
+        <h3>Average Rating: Not rated yet</h3>
+    {% else %}
+        <h3>Average Rating: {{ movie.rating }} %</h3>
+    {% endif %}
+{% endblock %}

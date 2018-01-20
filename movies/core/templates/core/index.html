@@ -1,55 +1,14 @@
-<!-- Loads the path to your static files -->
-{% load static %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!--<img src="{% static "core/images/paper.jpg" %}" alt="My image"/>-->
+{% extends 'core/base.html' %}
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid"></div>
-
-    <!-- Header -->
-    <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-
-        <a class="navbar-brand" href="{% url 'core:index' %}">Movies app</a>
-    </div>
-
-    <!-- Items -->
-    <div class ="collapse navbar-collapse" id="topNavBar">
-
-        <form class="navbar-form navbar-left" role="search" method="get" action="#">
-            <div class="form-group">
-                <input type="text" class="form-control" name="q" value="">
-            </div>
-            <button type="submit" class="btn btn-default">Search</button>
-        </form>
-
-        <ul class="nav navbar-nav navbar-right">
-            <li class="">
-                <a href="{% url 'core:index' %}">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Movie
-                </a>
-            </li>
+{% block body %}
+    {% if all_movies %}
+        <h3>Movie list:</h3>
+        <ul>
+            {% for movie in all_movies %}
+                <li><a href="{% url 'core:detail' movie.id %}">{{ movie.title }}</a></li>
+            {% endfor %}
         </ul>
-
-
-    </div>
-</nav>
-
-{% if all_movies %}
-    <h3>Movie list:</h3>
-    <ul>
-        {% for movie in all_movies %}
-            <li><a href="{% url 'core:detail' movie.id %}">{{ movie.title }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>No movies in database</h3>
-{% endif %}
+    {% else %}
+        <h3>No movies in database</h3>
+    {% endif %}
+{% endblock %}
