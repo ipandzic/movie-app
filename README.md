@@ -1,6 +1,6 @@
 # Movies
 
-This is a simple Django website displaying movies opening on this week gathered from https://www.rottentomatoes.com/browse/opening/. In creating this website, I used Python 2.7.12 and Django 1.11. For more details see requirements.txt.
+This is a simple Django website displaying movies opening this week gathered from https://www.rottentomatoes.com/browse/opening/. In creating this website, I used Python 2.7.12 and Django 1.11. For more details see requirements.txt.
 
 ### Quickstart
 
@@ -10,7 +10,7 @@ Get the source from GitHub:
 
 Create Python2 virtual environment:
 
-    virtualenv  myenv
+    virtualenv myenv
     . myenv/bin/activate
 
 Install required files:
@@ -29,8 +29,4 @@ Run development server:
 
     python manage.py runserver
 
-Point your browser to http://127.0.0.1:8000/admin and login
-
-Running tests:
-
-    python manage.py test
+Point your browser to http://127.0.0.1:8000/admin and login or go to http://127.0.0.1:8000/core to browse the website.
