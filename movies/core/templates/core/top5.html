@@ -1,5 +1,5 @@
 {% extends 'core/base.html' %}
-{% block title %}{{ movie.title }}{% endblock %}
+{% block title %} Top 5 {% endblock %}
 {% load staticfiles %}
 
 {% block body %}
@@ -11,11 +11,10 @@
                         <p><h4>Position: {{ movie.position }}</h4>
                         <h4>Movie Title: <a href="{% url 'core:detail' movie.id %}">{{ movie.title }}</a></h4>
                         <h4>Production company: {{ movie.production_company }}</h4>
-                        {% if movie.rating == None %}
 
+                        {% if movie.rating == None %}
                         <h4>Average Rating: <img src="{% static 'core/images/wtsicon.png' %}"  style="height: 26px; width: 25px;"/>
                         Not rated yet.</h4>
-
                         {% else %}
                         <h4>Average Rating: <img alt="" src="{% static 'core/images/tomato.png' %}" style="height: 26px; width: 25px;" /> {{ movie.rating }} %</h4>
                         {% endif %}</p>
@@ -38,18 +37,9 @@
                             </button>
                         </form>
 
-
                     </div>
                 </div>
             </div>
             {% endfor %}
-
-
-
-
-
-
-
-
 
 {% endblock %}

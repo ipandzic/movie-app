@@ -1,6 +1,6 @@
 # Movies
 
-A simple movies website.
+This is a simple Django website displaying movies opening on this week gathered from https://www.rottentomatoes.com/browse/opening/. In creating this website, I used Python 2.7.12 and Django 1.11. For more details see requirements.txt.
 
 ### Quickstart
 
