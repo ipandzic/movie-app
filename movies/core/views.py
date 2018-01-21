@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.views import generic
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from .models import Movie
 
 
-class IndexView(generic.ListView):
+class IndexView(ListView):
     template_name = "core/index.html"
     context_object_name = 'all_movies'
 
@@ -15,7 +15,7 @@ class IndexView(generic.ListView):
         return Movie.objects.all()
 
 
-class DetailView(generic.DetailView):
+class DetailView(DetailView):
     model = Movie
     template_name = "core/detail.html"
 
