@@ -1,6 +1,7 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from core.models import Movie
+
 from .serializers import MovieSerializer
 
 
