@@ -21,7 +21,7 @@ Migrate the database:
 
     python manage.py migrate
 
-Use the custom manage.py command to populate the database from www.rottentomatoes.com/browse/opening/:
+Use the custom manage.py command to populate the database using data from www.rottentomatoes.com/browse/opening/:
 
     python manage.py transfer
 
@@ -34,4 +34,4 @@ Run development server:
 
     python manage.py runserver
 
-Point your browser to http://127.0.0.1:8000/admin and login or go to http://127.0.0.1:8000/core to browse the website.
+Point your browser to http://127.0.0.1:8000/core to browse the website, to http://127.0.0.1:8000/admin to login into the admin interface or go to http://127.0.0.1:8000/api to use the API.
