@@ -6,7 +6,7 @@ os.path.dirname(os.path.dirname(__file__))
 
 
 class Command(BaseCommand):
-    help = 'Gets movies opening this week from Rotten Tomatoes website.'
+    help = 'Gets data on movies opening this week from Rotten Tomatoes website.'
 
     def handle(self, *args, **options):
         os.system('python getmovies.py')

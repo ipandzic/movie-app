@@ -31,12 +31,18 @@ class DetailView(DetailView):
 
 class MovieCreate(CreateView):
     model = Movie
-    fields = ['position', 'title', 'production_company', 'rating', 'movie_url', 'image_url']
+    fields = [
+        'position', 'title', 'production_company',
+        'rating', 'movie_url', 'image_url'
+    ]
 
 
 class MovieUpdate(UpdateView):
     model = Movie
-    fields = ['position', 'title', 'production_company', 'rating', 'movie_url', 'image_url']
+    fields = [
+        'position', 'title', 'production_company',
+        'rating', 'movie_url', 'image_url'
+    ]
 
 
 class MovieDelete(DeleteView):
