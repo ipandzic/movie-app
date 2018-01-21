@@ -1,5 +1,6 @@
 {% extends 'core/base.html' %}
 {% block title %}{{ movie.title }}{% endblock %}
+{% load staticfiles %}
 
 {% block body %}
 
@@ -15,9 +16,11 @@
         <h4>Production Company:  {{ movie.production_company }}</h4>
 
         {% if movie.rating == None %}
-            <h4>Average Rating: Not rated yet</h4>
+            <h4>Average Rating: <img src="{% static 'core/images/wtsicon.png' %}"  style="height: 26px; width: 25px;"/>
+            Not rated yet</h4>
         {% else %}
-            <h4>Average Rating: {{ movie.rating }} %</h4>
+            <h4>Average Rating: <img src="{% static 'core/images/tomato.png' %}"  style="height: 26px; width: 25px;"/>
+            {{ movie.rating }} %</h4>
         {% endif %}
 
 {% endblock %}

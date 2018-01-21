@@ -20,16 +20,16 @@
                             {% for movie in all_movies|slice:":5" %}
 
                                 <p><a href="{% url 'core:detail' movie.id %}">
-                                {{ movie.title }} ({{ movie.production_company | truncatechars:25 }})</a></p>
+                                {{ movie.title }} </a>
  
                                 {% if movie.rating == None %}
 
-                                <img src="{% static 'core/images/wtsicon.png' %}"  style="height: 26px; width: 25px;"/>
+                                <img src="{% static 'core/images/wtsicon.png' %}"  style="height: 18px; width: 18px;"/>
 
                                 {% else %}
-                                <img alt="" src="{% static 'core/images/tomato.png' %}" style="height: 26px; width: 25px;" /> {{ movie.rating }} %
-                                {% endif %}
-
+                                <img alt="" src="{% static 'core/images/tomato.png' %}" style="height: 18px; width: 18px;" /> {{ movie.rating }} %
+                                {% endif %}</p>
+                                <p>{{ movie.production_company | truncatechars:25 }}</p>
 
                             {% endfor %}
                         </div>
