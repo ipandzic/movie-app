@@ -3,12 +3,39 @@
 {% block body %}
 
     {% if all_movies %}
-        <h3>Movie list:</h3>
-        <ul>
+        <h2>Movie list:</h2>
+
             {% for movie in all_movies %}
-                <li><a href="{% url 'core:detail' movie.id %}">{{ movie.title }}</a></li>
+            <div class="col-sm-4 col-lg-2">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <a href="{% url 'core:detail' movie.id %}"><img src="{{ movie.image_url }}"></a>
+                        <h5><a href="{% url 'core:detail' movie.id %}">{{ movie.title | truncatechars:25 }}</a></h5>
+
+                            <form action="{% url 'core:movie-update' movie.id %}" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="movie_id" value="{{ transaction.id }}" />
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                            </form>
+
+                            <form action="{% url 'core:movie-delete' movie.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="movie_id" value="{{ movie.id }}" />
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </form>
+
+
+
+
+                    </div>
+                </div>
+            </div>
             {% endfor %}
-        </ul>
+
     {% else %}
         <h3>No movies in database</h3>
     {% endif %}
