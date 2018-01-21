@@ -23,7 +23,7 @@ Migrate the database:
 
 Use the custom manage.py command to populate the database from www.rottentomatoes.com/browse/opening/:
 
-    python manage.py trasnfer
+    python manage.py transfer
 
 
 Create super user:
