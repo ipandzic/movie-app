@@ -3,15 +3,21 @@
 
 {% block body %}
 
-    <img src="{{ movie.image_url }}">
+<div class="col-sm-4 col-lg-2">
+    <div class="thumbnail">
 
-    <h1>Movie Title: {{ movie.title }}</h1>
-    <h3>Production Company:  {{ movie.production_company }}</h3>
+        <img src="{{ movie.image_url }}">
 
-    {% if movie.rating == None %}
-        <h3>Average Rating: Not rated yet</h3>
-    {% else %}
-        <h3>Average Rating: {{ movie.rating }} %</h3>
-    {% endif %}
+    </div>
+</div>
     
+        <h2>Movie Title: {{ movie.title }}</h2>
+        <h4>Production Company:  {{ movie.production_company }}</h4>
+
+        {% if movie.rating == None %}
+            <h4>Average Rating: Not rated yet</h4>
+        {% else %}
+            <h4>Average Rating: {{ movie.rating }} %</h4>
+        {% endif %}
+
 {% endblock %}
