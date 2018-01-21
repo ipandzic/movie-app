@@ -11,7 +11,8 @@ django.setup()
 
 from core.models import Movie
 
-request = urllib2.urlopen("https://www.rottentomatoes.com/browse/opening/")
+url = "https://www.rottentomatoes.com/"
+request = urllib2.urlopen(url + "browse/opening/")
 soup = bs4.BeautifulSoup(request, 'html.parser')
 
 schema = soup.find("script", {"id": "jsonLdSchema"}).get_text()
@@ -23,7 +24,7 @@ for item in movie_list:
     item = json.loads(item)
     item_position = item["position"]
     item_movie_url = item["url"]
-    item_request = urllib2.urlopen("https://www.rottentomatoes.com/" + item_movie_url)
+    item_request = urllib2.urlopen(url + item_movie_url)
     item_soup = bs4.BeautifulSoup(item_request, 'html.parser')
     item_schema = item_soup.findAll("script", {"id": "jsonLdSchema"})[0].get_text()
     item_dict = json.loads(item_schema)
