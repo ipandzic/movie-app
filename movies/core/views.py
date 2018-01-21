@@ -15,6 +15,14 @@ class IndexView(ListView):
         return Movie.objects.all()
 
 
+class Top5View(ListView):
+    template_name = "core/top5.html"
+    context_object_name = 'all_movies'
+
+    def get_queryset(self):
+        return Movie.objects.all()
+
+
 class DetailView(DetailView):
     model = Movie
     template_name = "core/detail.html"
