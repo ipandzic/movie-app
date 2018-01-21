@@ -1,12 +1,46 @@
 {% extends 'core/base.html' %}
 
 {% block body %}
+{% load staticfiles %}
 
     {% if all_movies %}
-        <h2>Movie list:</h2>
+        <h2><center>Movie list:</center></h2>
+
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                        Top 5 Movies
+                        </h4>
+                    </div>
+
+                    <div class="panel-wrapper collapse in">
+                        <div class="panel-body">
+                            {% for movie in all_movies|slice:":5" %}
+
+                                <p><a href="{% url 'core:detail' movie.id %}">
+                                {{ movie.title }} ({{ movie.production_company | truncatechars:25 }})</a></p>
+ 
+                                {% if movie.rating == None %}
+
+                                <img src="{% static 'core/images/wtsicon.png' %}"  style="height: 26px; width: 25px;"/>
+
+                                {% else %}
+                                <img alt="" src="{% static 'core/images/tomato.png' %}" style="height: 26px; width: 25px;" /> {{ movie.rating }} %
+                                {% endif %}
+
+
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
 
             {% for movie in all_movies %}
-            <div class="col-sm-4 col-lg-2">
+            <div class="col-md-8 col-lg-2">
                 <div class="thumbnail">
                     <div class="caption">
                         <a href="{% url 'core:detail' movie.id %}"><img src="{{ movie.image_url }}"></a>
@@ -27,14 +61,26 @@
                                  <span class="glyphicon glyphicon-trash"></span>
                             </button>
                         </form>
-                        
+
+                        {% if movie.rating == None %}
+
+                        <img src="{% static 'core/images/wtsicon.png' %}"  style="height: 26px; width: 25px;"/>
+
+                        {% else %}
+                        <img alt="" src="{% static 'core/images/tomato.png' %}" style="height: 26px; width: 25px;" /> {{ movie.rating }} %
+                        {% endif %}
+
                     </div>
                 </div>
             </div>
             {% endfor %}
 
+
+
     {% else %}
         <h3>No movies in database</h3>
     {% endif %}
+
+
 
 {% endblock %}
