@@ -12,25 +12,22 @@
                         <a href="{% url 'core:detail' movie.id %}"><img src="{{ movie.image_url }}"></a>
                         <h5><a href="{% url 'core:detail' movie.id %}">{{ movie.title | truncatechars:25 }}</a></h5>
 
-                            <form action="{% url 'core:movie-update' movie.id %}" style="display: inline;">
-                                {% csrf_token %}
-                                <input type="hidden" name="movie_id" value="{{ transaction.id }}" />
-                                <button type="submit" class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-pencil"></span>
-                                </button>
-                            </form>
+                        <form action="{% url 'core:movie-update' movie.id %}" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="movie_id" value="{{ transaction.id }}" />
+                            <button type="submit" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                        </form>
 
-                            <form action="{% url 'core:movie-delete' movie.id %}" method="post" style="display: inline;">
-                                {% csrf_token %}
-                                <input type="hidden" name="movie_id" value="{{ movie.id }}" />
-                                <button type="submit" class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </button>
-                            </form>
-
-
-
-
+                        <form action="{% url 'core:movie-delete' movie.id %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="movie_id" value="{{ movie.id }}" />
+                            <button type="submit" class="btn btn-default btn-sm">
+                                 <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
