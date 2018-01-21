@@ -29,7 +29,7 @@
                                 {% else %}
                                 <img alt="" src="{% static 'core/images/tomato.png' %}" style="height: 18px; width: 18px;" /> {{ movie.rating }} %
                                 {% endif %}</p>
-                                <p>{{ movie.production_company | truncatechars:25 }}</p>
+                                <p>{{ movie.production_company | truncatechars:50 }}</p>
 
                             {% endfor %}
                         </div>
